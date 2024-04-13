@@ -1,0 +1,16 @@
+{
+  "tags": [
+    "Fast", "Slow", "Upbeat", "Downbeat", "Moderate",
+    "Happy", "Sad", "Energetic", "Relaxed", "Melancholic", "Uplifting", "Aggressive", "Peaceful", "Romantic", "Dark", "Light", "Mysterious", "Dreamy", "Somber", "Hopeful", "Gloomy", "Cheerful", "Reflective", "Nostalgic", "Tense", "Calm",
+    "Piano", "Guitar", "Violin", "Drums", "Bass", "Synthesizer", "Saxophone", "Trumpet", "Flute", "Cello", "Clarinet", "Harp", "Viola", "Percussion", "Organ", "Accordion", "Banjo", "Oboe", "Trombone", "French Horn", "Double Bass", "Electronic", "Acoustic",
+    "Rock", "Pop", "Jazz", "Classical", "Electronic", "Folk", "Hip-Hop", "Blues", "Ambient", "Country", "Reggae", "Funk", "Soul", "Metal", "Dance", "Disco", "House", "Techno", "Trance", "Opera", "Soundtrack", "World", "Indie", "Alternative", "R&B",
+    "Bright", "Warm", "Cool", "Thick", "Thin", "Soft", "Hard", "Smooth", "Rough", "Dense", "Sparse", "Clear", "Muddy", "Distorted", "Clean", "Raw", "Processed", "Lo-fi", "Hi-fi", "Layered", "Minimalist",
+    "Live", "Studio", "Sampled", "Loop", "Beat", "Mix", "Master", "Edit", "Remix", "Cover", "Acapella", "Instrumental", "Field Recording", "Digital", "Analog",
+    "Groovy", "Rhythmic", "Beat-driven", "Syncopated", "Polyrhythmic", "Drumless", "Percussive",
+    "African", "Asian", "Latin", "Middle Eastern", "European", "American", "Caribbean", "Celtic", "Indian", "Balkan",
+    "Cinematic", "Atmospheric", "Experimental", "Avant-garde", "Psychedelic", "Trippy", "Ethereal", "Spatial", "Dynamic", "Static", "Complex", "Simple", "Progressive", "Retro", "Vintage", "Modern", "Timeless", "Seasonal", "Holiday", "Festive", "Lyrical", "Melodic", "Harmonic", "Dissonant", "Consonant",
+    "At a Bar", "At a Club", "Concert", "In the Car", "Study", "Workout", "Party", "Background", "Night Drive", "Morning",
+    "Mandolin", "Ukulele", "Harmonica", "Turntable", "Synth Pad", "Electric Guitar", "Acoustic Guitar", "Keyboards", "Digital Piano", "Marimba", "Xylophone", "Tabla", "Sitar", "Didgeridoo", "Steel Drum", "Congas", "Bongos", "Timpani", "Djembe", "Pan Flute",
+    "EDM", "Chillwave", "Dubstep", "New Age", "Gospel", "K-Pop", "J-Pop", "C-Pop", "Afrobeats", "Reggaeton", "Ska", "Punk", "Emo", "Grunge", "Shoegaze", "Lo-fi Hip-Hop", "Drum and Bass", "Jazz Fusion", "Neo-Soul", "Trap"
+  ]
+}
