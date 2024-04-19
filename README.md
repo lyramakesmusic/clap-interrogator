@@ -45,13 +45,10 @@ Any `tags.json` file you provide is expected to follow this format:
 ```json
 {
   "category": [
-    "tag1",
-    "tag2",
-    "tag3"
+    "tag1", "tag2", "tag3"
   ],
   "category2": [
-    "tag4",
-    "tag5"
+    "tag4", "tag5", "tag6", "tag7"
   ]
 }
 ```
