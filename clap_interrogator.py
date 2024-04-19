@@ -3,14 +3,19 @@ import torchaudio
 from transformers import ClapProcessor, ClapModel
 
 class Interrogator:
-    def __init__(self, model_name="laion/clap-htsat-unfused", tags_file='tags.json'):
-        # Load the processor and model
+    def __init__(self, model_name="laion/clap-htsat-unfused", tags="tags.json"):
+
         self.processor = ClapProcessor.from_pretrained(model_name)
         self.model = ClapModel.from_pretrained(model_name)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model.to(self.device)
-        # Load tags
-        self.tags = self.load_tags(file_path=tags_file)
+        
+        if isinstance(tags, str):
+            self.tags = self.load_tags_from_file(tags)
+        elif isinstance(tags, list):
+            self.tags = list(set(tags))
+        else:
+            raise ValueError("Tags must be a file path (str) or a list of tags (list).")
 
     def load_tags(self, file_path='tags.json'):
         import json
@@ -20,7 +25,6 @@ class Interrogator:
         return list(set(tags))
 
     def tag(self, audio_input, sr=None, top_n=10):
-        # Check if audio_input is a string path, if so, load the audio
         if isinstance(audio_input, str):
             audio, sr = torchaudio.load(audio_input)
             audio = audio.squeeze(0) 
