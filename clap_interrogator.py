@@ -3,14 +3,14 @@ import torchaudio
 from transformers import ClapProcessor, ClapModel
 
 class Interrogator:
-    def __init__(self, model_name="laion/clap-htsat-unfused"):
+    def __init__(self, model_name="laion/clap-htsat-unfused", tags_file='tags.json'):
         # Load the processor and model
         self.processor = ClapProcessor.from_pretrained(model_name)
         self.model = ClapModel.from_pretrained(model_name)
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.model.to(self.device)
         # Load tags
-        self.tags = self.load_tags()
+        self.tags = self.load_tags(file_path=tags_file)
 
     def load_tags(self, file_path='tags.json'):
         import json
