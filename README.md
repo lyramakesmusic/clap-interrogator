@@ -29,9 +29,31 @@ tags = interrogator.tag(audio_tensor, sr)
 
 print(tags) # ["tag 1", "tag 2", "tag 3" . . .]
 
+# I want more tags!
+tags = interrogator.tag('/path/to/audio/file.wav', top_n=50)
+
 # Load a different CLAP model:
 interrogator = Interrogator(model_name="laion/clap-htsat-unfused")
 
+# Use different tags to interrogate against:
+interrogator = Interrogator(tags="more_tags.json")
+interrogator = Interrogator(tags=["Bright", "Mellow", "Strings"])
+```
+
+Any `tags.json` file you provide is expected to follow this format:
+
+```json
+{
+  "category": [
+    "tag1",
+    "tag2",
+    "tag3"
+  ],
+  "category2": [
+    "tag4",
+    "tag5"
+  ]
+}
 ```
 
 Development version (with WIP genetic algo) here: https://colab.research.google.com/drive/1GoLrpSbwm9Bersz3n42F2jVvAXr02hMB
