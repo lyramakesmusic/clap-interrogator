@@ -7,7 +7,7 @@ A simple Python class for audio tagging using the CLAP model from the LAION suit
 Clone and install:
 
 ```
-git clone https://github.com/lyramakesmusic/clap_interrogator.git
+git clone https://github.com/lyramakesmusic/clap-interrogator.git
 cd clap_interrogator
 pip install -e .
 ```
