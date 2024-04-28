@@ -5,6 +5,7 @@ setup(
     version="0.1.0",
     packages=find_packages(),
     install_requires=[
-        "transformers>=4.40.0"
+        "transformers>=4.40.0",
+        "librosa>=0.9.2
     ],
 )
