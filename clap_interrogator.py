@@ -1,9 +1,11 @@
 import torch
 import torchaudio
+import torchaudio.transforms as T
+
 from transformers import ClapProcessor, ClapModel
 
 class Interrogator:
-    def __init__(self, model_name="laion/clap-htsat-unfused", tags="tags.json"):
+    def __init__(self, model_name="laion/clap-htsat-unfused", tags="clap-interrogator/tags.json"):
 
         self.processor = ClapProcessor.from_pretrained(model_name)
         self.model = ClapModel.from_pretrained(model_name)
@@ -25,6 +27,8 @@ class Interrogator:
         return list(set(tags))
 
     def tag(self, audio_input, sr=None, top_n=10):
+
+        # Audio loading and reshaping
         if isinstance(audio_input, str):
             audio, sr = torchaudio.load(audio_input)
             audio = audio.squeeze(0) 
@@ -34,9 +38,16 @@ class Interrogator:
                 raise ValueError("Sampling rate must be provided with audio tensor.")
         else:
             raise TypeError("Invalid input type for audio_input. Must be a file path or torch.Tensor.")
+        
+        if sr != 48000:
+            resampler = T.Resample(orig_freq=sr, new_freq=48000)
+            audio = resampler(audio)
+
+        if audio.dtype != torch.float32:
+            audio = audio.to(torch.float32) / 32768.0
 
         # Process inputs
-        inputs = self.processor(text=self.tags, audios=[audio], sampling_rate=sr, return_tensors="pt", padding=True)
+        inputs = self.processor(text=self.tags, audios=[audio], sampling_rate=48000, return_tensors="pt", padding=True)
         inputs = {key: val.to(self.device) for key, val in inputs.items()}
         
         # Compute similarity
