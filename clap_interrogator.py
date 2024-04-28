@@ -11,7 +11,7 @@ class Interrogator:
         self.model.to(self.device)
         
         if isinstance(tags, str):
-            self.tags = self.load_tags_from_file(tags)
+            self.tags = self.load_tags(tags)
         elif isinstance(tags, list):
             self.tags = list(set(tags))
         else:
