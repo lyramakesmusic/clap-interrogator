@@ -30,7 +30,7 @@ class Interrogator:
         # Audio loading and reshaping
         if isinstance(audio_input, str):
             audio, sr = librosa.load(audio_input, sr=48000)
-            audio_tensor = torch.tensor(audio, device=device)
+            audio_tensor = torch.tensor(audio, device=self.device)
 
         elif isinstance(audio_input, torch.Tensor):
             audio = audio_input
