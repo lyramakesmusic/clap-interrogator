@@ -4,7 +4,7 @@ import torchaudio
 from transformers import ClapProcessor, ClapModel
 
 class Interrogator:
-    def __init__(self, model_name="laion/clap-htsat-unfused", tags="clap-interrogator/tags.json"):
+    def __init__(self, model_name="laion/clap-htsat-unfused", tags="clap_interrogator/tags.json"):
 
         self.processor = ClapProcessor.from_pretrained(model_name)
         self.model = ClapModel.from_pretrained(model_name)
