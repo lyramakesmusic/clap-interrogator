@@ -8,7 +8,7 @@ Clone and install:
 
 ```
 git clone https://github.com/lyramakesmusic/clap-interrogator.git
-cd clap_interrogator
+cd clap-interrogator
 pip install -e .
 ```
 
