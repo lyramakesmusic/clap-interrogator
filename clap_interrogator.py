@@ -2,6 +2,7 @@ import librosa
 import torch
 import torchaudio
 from transformers import ClapProcessor, ClapModel
+import json
 
 class Interrogator:
     def __init__(self, model_name="laion/clap-htsat-unfused", tags="clap_interrogator/tags.json"):
@@ -12,14 +13,13 @@ class Interrogator:
         self.model.to(self.device)
         
         if isinstance(tags, str):
-            self.tags = self.load_tags(tags)
+            self.tags = self.load_tags(file_path=tags)
         elif isinstance(tags, list):
             self.tags = list(set(tags))
         else:
             raise ValueError("Tags must be a file path (str) or a list of tags (list).")
 
-    def load_tags(self, file_path='tags.json'):
-        import json
+    def load_tags(self, file_path='clap_interrogator/tags.json'):
         with open(file_path, 'r') as file:
             tags_data = json.load(file)
             tags = sum(tags_data.values(), [])
