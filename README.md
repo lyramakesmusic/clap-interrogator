@@ -52,6 +52,10 @@ with ProcessPoolExecutor(max_workers=10) as executor:
         tags.append(future.result())
 
 print(tags[0]) # {"path": "/path/to/audio/file", "tags": ["tag1", "tag2", . . . "tag10"]}
+
+# As the worst one-liner i could manage to write:
+with ProcessPoolExecutor(max_workers=10) as executor:
+    tags = [result if (result := (lambda f: f.result() if not f.exception() else None)(future)) is not None else 'Error' for future in as_completed(executor.submit(lambda path: {"path": path, "tags": interrogator.tag(path)}, filepath) for filepath in [os.path.join(dirpath, fname) for dirpath, _, fnames in os.walk("/path/to/audio/folder") for fname in fnames])]
 ```
 
 Any `tags.json` file you provide is expected to follow this format:
