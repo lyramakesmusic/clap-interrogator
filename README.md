@@ -38,10 +38,14 @@ interrogator = Interrogator(model_name="laion/clap-htsat-unfused")
 # Use different tags to interrogate against:
 interrogator = Interrogator(tags="more_tags.json")
 interrogator = Interrogator(tags=["Bright", "Mellow", "Strings"])
+```
 
+```py
 # Efficiently tag all the files in a folder:
 from concurrent.futures import ProcessPoolExecutor, as_completed
+from clap_interrogator import Interrogator
 
+interrogator = Interrogator()
 tags = []
 filepaths = [os.path.join(dirpath, fname) for dirpath, _, fnames in os.walk("/path/to/audio/folder") for fname in fnames]
 process_file = lambda path: {"path": path, "tags": interrogator.tag(path)}
