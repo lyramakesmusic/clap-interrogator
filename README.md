@@ -43,7 +43,7 @@ interrogator = Interrogator(tags=["Bright", "Mellow", "Strings"])
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import json
 
-filepaths = [os.path.join(dirpath, filename) for dirpath, _, filenames in os.walk("/path/to/your/folder/of/audio") for filename in filenames]
+filepaths = [os.path.join(dirpath, filename) for dirpath, _, filenames in os.walk("/path/to/audio/folder") for filename in filenames]
 tags = []
 process_file = lambda path: json.dumps({"path": path, "caption": interrogator.tag(path)})
 
