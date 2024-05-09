@@ -41,11 +41,10 @@ interrogator = Interrogator(tags=["Bright", "Mellow", "Strings"])
 
 # Efficiently tag all the files in a folder:
 from concurrent.futures import ProcessPoolExecutor, as_completed
-import json
 
 filepaths = [os.path.join(dirpath, fname) for dirpath, _, fnames in os.walk("/path/to/audio/folder") for fname in fnames]
 tags = []
-process_file = lambda path: json.dumps({"path": path, "tags": interrogator.tag(path)})
+process_file = lambda path: {"path": path, "tags": interrogator.tag(path)}
 
 with ProcessPoolExecutor(max_workers=10) as executor:
     futures = {executor.submit(process_file, filepath): filepath for filepath in filepaths}
