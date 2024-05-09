@@ -45,14 +45,14 @@ import json
 
 filepaths = [os.path.join(dirpath, fname) for dirpath, _, fnames in os.walk("/path/to/audio/folder") for fname in fnames]
 tags = []
-process_file = lambda path: json.dumps({"path": path, "caption": interrogator.tag(path)})
+process_file = lambda path: json.dumps({"path": path, "tags": interrogator.tag(path)})
 
 with ProcessPoolExecutor(max_workers=10) as executor:
     futures = {executor.submit(process_file, filepath): filepath for filepath in filepaths}
     for future in as_completed(futures):
         tags.append(future.result())
 
-print(tags[0])
+print(tags[0]) # {"path": "/path/to/audio/file", "tags": ["tag1", "tag2", . . . "tag10"]}
 ```
 
 Any `tags.json` file you provide is expected to follow this format:
